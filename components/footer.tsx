@@ -1,0 +1,5 @@
+import { ArrowUpRight, GitBranch } from 'lucide-react'
+
+export function Footer() {
+  return <footer id="footer" className="py-10"><div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 lg:px-8"><div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center"><a href="#top" className="font-mono text-sm font-semibold text-foreground">shelltap<span className="text-primary">.</span></a><div className="flex items-center gap-5"><a href="https://github.com" target="_blank" rel="noreferrer" className="text-muted-foreground transition-colors hover:text-foreground" aria-label="Shelltap on GitHub"><GitBranch className="size-4" /></a><a href="mailto:hello@shelltap.dev" className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground">Say hello <ArrowUpRight className="size-3.5" /></a></div></div><div className="flex flex-col justify-between gap-2 border-t border-border pt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground/60 sm:flex-row"><span>Learn the tools. Keep the flow.</span><span>© 2026 shelltap</span></div></div></footer>
+}

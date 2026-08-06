@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  color-scheme: dark;
+  --background: oklch(0.13 0.015 155);
+  --foreground: oklch(0.94 0.015 150);
+  --card: oklch(0.17 0.018 155);
+  --card-foreground: oklch(0.94 0.015 150);
+  --primary: oklch(0.78 0.19 150);
+  --primary-foreground: oklch(0.13 0.015 155);
+  --muted: oklch(0.22 0.02 155);
+  --muted-foreground: oklch(0.63 0.025 150);
+  --border: oklch(0.94 0.015 150 / 12%);
+  --ring: oklch(0.78 0.19 150 / 50%);
+  --radius: 0.55rem;
+}
+
+* { @apply border-border outline-ring/50; }
+html { scroll-behavior: smooth; }
+body { @apply bg-background text-foreground font-sans; min-width: 320px; }
+
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: 0.28; background-image: linear-gradient(to right, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to bottom, black, transparent 78%); }
+.terminal-window { background-image: linear-gradient(135deg, color-mix(in oklch, var(--primary) 4%, transparent), transparent 48%); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }

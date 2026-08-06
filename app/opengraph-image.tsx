@@ -1,0 +1,5 @@
+import { ImageResponse } from 'next/og'
+
+export default function OpenGraphImage() {
+  return new ImageResponse(<div style={{ background: '#070a09', color: '#e4eee7', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between', padding: '72px', width: '100%', fontFamily: 'monospace' }}><div style={{ color: '#a8e6b9', display: 'flex', fontSize: 28, fontWeight: 700 }}><span style={{ background: '#a8e6b9', borderRadius: 8, color: '#070a09', marginRight: 14, padding: '8px 10px' }}>&gt;_</span>shelltap.</div><div style={{ display: 'flex', flexDirection: 'column' }}><div style={{ color: '#a8e6b9', fontSize: 22, marginBottom: 24 }}>A command center for curious developers</div><div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'sans-serif', fontSize: 76, fontWeight: 700, letterSpacing: -4 }}>Learn by doing.<br /><span style={{ color: '#a8e6b9' }}>Ship with confidence.</span></div></div><div style={{ color: '#82958a', display: 'flex', fontSize: 20 }}>Hands-on labs for Git, Docker, and Linux / Bash.</div></div>, { width: 1200, height: 630 })
+}
