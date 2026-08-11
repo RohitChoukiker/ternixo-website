@@ -17,7 +17,7 @@ export const tools: Tool[] = [
     description: 'Learn version control by branching, merging, and shipping real changes.',
     icon: GitBranch,
     status: 'live',
-    href: 'https://git.yourdomain.com',
+    href: 'https://git.ternixo.com',
     command: 'git switch -c feature/your-idea',
     accent: 'git',
   },
