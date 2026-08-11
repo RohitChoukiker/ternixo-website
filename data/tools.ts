@@ -13,14 +13,14 @@ export type Tool = {
 
 export const tools: Tool[] = [
   {
-    name: 'Git',
-    description: 'Learn version control by branching, merging, and shipping real changes.',
-    icon: GitBranch,
-    status: 'live',
-    href: 'https://git.ternixo.com',
-    command: 'git switch -c feature/your-idea',
-    accent: 'git',
-  },
+  name: 'Linux',
+  description: 'Learn Linux commands, file systems, permissions, processes, networking, and real server workflows.',
+  icon: Terminal,
+  status: 'live',
+  href: 'https://linux-lab.ternixo.in',
+  command: 'ls -la',
+  accent: 'linux',
+},
   {
     name: 'Docker',
     description: 'Build a container intuition from images to networks without the guesswork.',
