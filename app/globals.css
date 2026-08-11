@@ -2,66 +2,53 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
-  --font-sans: var(--font-geist), sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --color-background: var(--bg);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-elevated);
+  --color-card-foreground: var(--text-primary);
+  --color-muted: var(--bg-elevated-hover);
+  --color-muted-foreground: var(--text-secondary);
   --color-border: var(--border);
-  --color-ring: var(--ring);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
+  --color-ring: var(--accent-linux);
 }
 
 :root {
-  color-scheme: light;
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --primary: #4f46e5;
-  --primary-foreground: #ffffff;
-  --muted: #f1f5f9;
-  --muted-foreground: #475569;
-  --border: #e2e8f0;
-  --ring: #6366f1;
-  --success: #047857;
-  --radius: 0.75rem;
-}
-
-.dark {
   color-scheme: dark;
-  --background: #0b0f19;
-  --foreground: #f8fafc;
-  --card: #111827;
-  --card-foreground: #f8fafc;
-  --primary: #818cf8;
-  --primary-foreground: #0b0f19;
-  --muted: #172033;
-  --muted-foreground: #a8b3c7;
-  --border: #263247;
-  --ring: #818cf8;
-  --success: #34d399;
+  --bg: #0a0d12;
+  --bg-elevated: #12161d;
+  --bg-elevated-hover: #171c25;
+  --border: #1f242c;
+  --border-strong: #2b323d;
+  --text-primary: #e8ecf1;
+  --text-secondary: #8a94a3;
+  --text-muted: #5b6472;
+  --accent-git: #f0883e;
+  --accent-docker: #4fc3f7;
+  --accent-linux: #a3e635;
+  --background: var(--bg);
+  --foreground: var(--text-primary);
+  --card: var(--bg-elevated);
+  --card-foreground: var(--text-primary);
+  --muted: var(--bg-elevated-hover);
+  --muted-foreground: var(--text-secondary);
+  --ring: var(--accent-linux);
 }
 
-* { @apply border-border outline-ring/50; }
-html { scroll-behavior: smooth; }
-body { @apply bg-background text-foreground font-sans; min-width: 320px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
-
-body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .42; background-image: radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--primary) 11%, transparent), transparent 30%), radial-gradient(circle at 86% 18%, color-mix(in srgb, #10b981 8%, transparent), transparent 24%); }
-.hero-glow { background: #6366f1; filter: blur(150px); opacity: .12; }
-.terminal-window { position: relative; background: #0b1020; color: #e2e8f0; box-shadow: 0 30px 70px -30px rgb(15 23 42 / 45%); }
-.terminal-window::after { content: ''; position: absolute; inset: -1px; pointer-events: none; border-radius: inherit; border: 1px solid rgb(129 140 248 / 20%); }
-.terminal-caret { animation: terminal-blink 1s steps(1) infinite; box-shadow: 0 0 8px #818cf8; }
-@keyframes terminal-blink { 50% { opacity: 0; } }
-
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
+* { box-sizing: border-box; border-color: var(--border); }
+html { scroll-behavior: smooth; background: var(--bg); }
+body { min-width: 320px; margin: 0; background: var(--bg); color: var(--text-primary); font-family: var(--font-inter), sans-serif; }
+h1, h2, h3 { font-family: var(--font-space-grotesk), sans-serif; }
+code, pre, kbd { font-family: var(--font-jetbrains-mono), monospace; }
+::selection { background: color-mix(in srgb, var(--accent-linux) 24%, transparent); color: var(--text-primary); }
+a, button { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--focus-accent, var(--accent-linux)); outline-offset: 4px; }
+.terminal-cursor { display: inline-block; width: .56em; height: 1.05em; margin-left: 2px; translate: 0 .15em; background: currentColor; animation: cursor-blink 1s steps(1) infinite; }
+@keyframes cursor-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

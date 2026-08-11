@@ -1,5 +1,6 @@
 import { Footer } from '@/components/footer'
 import { Hero } from '@/components/hero'
+import { CommandVisualizer } from '@/components/command-visualizer'
 import { HowItWorks } from '@/components/how-it-works'
 import { Navbar } from '@/components/navbar'
 import { ToolsGrid } from '@/components/tools-grid'
@@ -12,5 +13,5 @@ export default function Page() {
     description: tool.description, provider: { '@type': 'Organization', name: siteConfig.name, sameAs: siteConfig.url },
     url: tool.status === 'live' ? tool.href : `${siteConfig.url}/#tools`,
   }))
-  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema).replace(/</g, '\\u003c') }} /><Navbar /><main><Hero /><ToolsGrid /><HowItWorks /></main><Footer /></>
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema).replace(/</g, '\\u003c') }} /><Navbar /><main><Hero /><CommandVisualizer /><ToolsGrid /><HowItWorks /></main><Footer /></>
 }

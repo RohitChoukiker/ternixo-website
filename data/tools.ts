@@ -1,6 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
 import { Box, GitBranch, Terminal } from 'lucide-react'
-// test
 export type Tool = {
   name: string
   description: string
@@ -13,13 +12,13 @@ export type Tool = {
 
 export const tools: Tool[] = [
   {
-  name: 'Linux',
-  description: 'Learn Linux commands, file systems, permissions, processes, networking, and real server workflows.',
-  icon: Terminal,
+  name: 'Git',
+  description: 'Build confidence with branches, commits, merges, and the workflows teams use every day.',
+  icon: GitBranch,
   status: 'live',
   href: 'https://linux-lab.ternixo.in',
-  command: 'ls -la',
-  accent: 'linux',
+  command: 'git checkout -b feature/lab-3',
+  accent: 'git',
 },
   {
     name: 'Docker',
