@@ -1,10 +1,39 @@
 'use client'
+
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+
 const links = [{ label: 'Tools', href: '#tools' }, { label: 'How it works', href: '#how-it-works' }]
+
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false); const [open, setOpen] = useState(false)
-  useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 12); onScroll(); addEventListener('scroll', onScroll, { passive: true }); return () => removeEventListener('scroll', onScroll) }, [])
-  return <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled || open ? 'border-border bg-[color-mix(in_srgb,var(--bg-elevated)_90%,transparent)] backdrop-blur-xl' : 'border-transparent bg-[color-mix(in_srgb,var(--bg)_75%,transparent)] backdrop-blur-md'}`}><div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8"><a href="#top" className="flex items-center gap-2 text-sm font-semibold"><Image src="/logo-256.png" alt="Ternixo logo" width={28} height={28} priority className="size-7" /><span>ternixo<span className="text-[var(--text-muted)]">.</span></span></a><nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">{links.map(link => <a key={link.href} href={link.href} className="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">{link.label}</a>)}</nav><a href="#tools" className="hidden items-center gap-2 border border-[var(--text-primary)] bg-[var(--text-primary)] px-4 py-2 text-sm font-medium text-[var(--bg)] active:scale-[.98] md:inline-flex">Start learning <ArrowUpRight className="size-3.5" /></a><button type="button" onClick={() => setOpen(!open)} className="p-2 text-[var(--text-secondary)] md:hidden" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>{open ? <X className="size-5" /> : <Menu className="size-5" />}</button></div>{open && <nav className="border-t border-border bg-[var(--bg-elevated)] px-5 py-4 md:hidden" aria-label="Mobile navigation">{links.map(link => <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="block py-3 text-sm text-[var(--text-secondary)]">{link.label}</a>)}<a href="#tools" onClick={() => setOpen(false)} className="mt-2 block border border-[var(--text-primary)] bg-[var(--text-primary)] px-4 py-3 text-center text-sm font-medium text-[var(--bg)]">Start learning</a></nav>}</header>
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    addEventListener('scroll', onScroll, { passive: true })
+    return () => removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled || open ? 'border-border bg-[color-mix(in_srgb,var(--bg-elevated)_90%,transparent)] backdrop-blur-xl' : 'border-transparent bg-[color-mix(in_srgb,var(--bg)_75%,transparent)] backdrop-blur-md'}`}>
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
+        <a href="#top" className="flex items-center gap-2">
+          <Image src="/logo-256.png" alt="Ternixo logo" width={28} height={28} priority className="size-7" />
+          <span className="flex flex-col leading-none">
+            <span className="text-sm font-semibold">ternixo<span className="text-[var(--text-muted)]">.</span></span>
+            <span className="mt-1 text-[9px] font-medium tracking-wide text-[var(--text-muted)]">by <span className="text-[var(--text-primary)]">Seq</span><span className="text-[#facc15]">Orbit</span></span>
+          </span>
+        </a>
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          {links.map(link => <a key={link.href} href={link.href} className="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">{link.label}</a>)}
+        </nav>
+        <a href="#tools" className="hidden items-center gap-2 border border-[var(--text-primary)] bg-[var(--text-primary)] px-4 py-2 text-sm font-medium text-[var(--bg)] active:scale-[.98] md:inline-flex">Start learning <ArrowUpRight className="size-3.5" /></a>
+        <button type="button" onClick={() => setOpen(!open)} className="p-2 text-[var(--text-secondary)] md:hidden" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>{open ? <X className="size-5" /> : <Menu className="size-5" />}</button>
+      </div>
+      {open && <nav className="border-t border-border bg-[var(--bg-elevated)] px-5 py-4 md:hidden" aria-label="Mobile navigation">{links.map(link => <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="block py-3 text-sm text-[var(--text-secondary)]">{link.label}</a>)}<a href="#tools" onClick={() => setOpen(false)} className="mt-2 block border border-[var(--text-primary)] bg-[var(--text-primary)] px-4 py-3 text-center text-sm font-medium text-[var(--bg)]">Start learning</a></nav>}
+    </header>
+  )
 }
