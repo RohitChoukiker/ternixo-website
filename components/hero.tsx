@@ -65,18 +65,7 @@ export function Hero() {
         </div>
       </div>
     </div>
-    <div className="border-t border-border">
-      <div className="mx-auto grid w-full max-w-6xl sm:w-[calc(100%-48px)] sm:grid-cols-[240px_minmax(0,1fr)] sm:border-x sm:border-border lg:grid-cols-[minmax(220px,320px)_minmax(0,1fr)]">
-        <div className="flex flex-col items-start justify-center gap-3 border-b border-border px-5 py-7 sm:min-h-36 sm:border-r sm:border-b-0 sm:px-6 lg:px-8">
-          <strong className="m-0 font-display text-[clamp(1.75rem,3vw,2.625rem)] font-semibold leading-none tracking-[-.04em] text-[var(--ink)]">TERNIXO.</strong>
-          <span className="m-0 font-mono text-xs text-[var(--muted-light)] sm:text-sm">by <span className="font-bold text-[var(--ink)]">Seq</span><span className="font-bold text-[var(--warning)]">Orbit</span></span>
-        </div>
-        <div className="flex min-w-0 items-start gap-3 overflow-hidden px-5 py-6 sm:min-h-36 sm:items-center sm:gap-5 sm:px-6 lg:px-10">
-          <span aria-hidden="true" className="grid size-7 shrink-0 place-items-center text-[var(--muted-light)]"><GitCommitHorizontal className="size-5" /></span>
-          <p className="m-0 min-w-0 [overflow-wrap:anywhere] font-mono text-[15px] leading-relaxed font-medium uppercase tracking-[.08em] text-[var(--muted-light)] sm:text-[clamp(1rem,2vw,1.55rem)] sm:leading-[1.4] sm:tracking-[.12em]">No videos. No busywork. Just the terminal.</p>
-        </div>
-      </div>
-    </div>
+   
   </section>
 }
 
