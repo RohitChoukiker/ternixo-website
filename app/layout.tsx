@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: { title: siteConfig.title, description: siteConfig.description, type: 'website', url: siteConfig.url, siteName: siteConfig.name, images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Ternixo — learn Git, Docker, and Linux by doing' }] },
   twitter: { card: 'summary_large_image', title: siteConfig.title, description: siteConfig.description, images: [{ url: '/opengraph-image', alt: 'Ternixo — learn Git, Docker, and Linux by doing' }] },
 }
-export const viewport: Viewport = { colorScheme: 'dark', themeColor: '#0a0d12', width: 'device-width', initialScale: 1 }
+export const viewport: Viewport = { colorScheme: 'light', themeColor: '#f1efe8', width: 'device-width', initialScale: 1 }
 const structuredData = [
   { '@context': 'https://schema.org', '@type': 'Organization', name: siteConfig.name, url: siteConfig.url, logo: `${siteConfig.url}/logo-512.png`, email: siteConfig.email },
   { '@context': 'https://schema.org', '@type': 'WebSite', name: siteConfig.name, url: siteConfig.url, description: siteConfig.description, publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url } },

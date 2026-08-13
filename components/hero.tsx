@@ -38,32 +38,45 @@ export function Hero() {
   }, [track, active.commands])
 
   const parts = typed.split('\n')
-  return <section id="top" className="border-b border-border pt-28 sm:pt-32 lg:pt-40">
+  return <section id="top" className="technical-grid border-b border-border pt-28 sm:pt-32 lg:pt-40">
     <div className="mx-auto grid max-w-6xl gap-14 px-5 pb-20 lg:grid-cols-[1fr_.96fr] lg:items-center lg:gap-16 lg:px-8 lg:pb-28">
       <div>
-        <div className="mb-6 inline-flex items-center gap-2 border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-3 py-1.5 font-mono text-[11px] text-[var(--text-secondary)]"><span className="size-1.5 bg-[var(--accent-linux)]" /> Hands-on learning for developers</div>
-        <h1 className="max-w-3xl text-[clamp(3rem,11vw,3.5rem)] font-semibold leading-[1.05] tracking-[-.045em] text-[var(--text-primary)]">Learn by doing.<br /><span className="text-[var(--text-secondary)]">Ship with confidence.</span></h1>
+        <div className="mb-6 inline-flex items-center gap-2 border border-[var(--ink)] bg-[var(--background)] px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[.12em]"><span className="size-1.5 bg-[var(--accent)]" /> Hands-on learning for developers</div>
+        <h1 className="max-w-3xl text-[clamp(3rem,11vw,4.7rem)] font-semibold uppercase leading-[.94] tracking-[-.055em] text-[var(--text-primary)]">Don&apos;t just memorize commands.<br /><span className="text-transparent [-webkit-text-stroke:1.5px_var(--ink)]">See what they do.</span></h1>
         <p className="mt-7 max-w-lg text-[17px] leading-[1.6] text-[var(--text-secondary)]">Ternixo turns Git, Docker, and Linux into hands-on labs. Run the command, see what changes, and build the muscle memory that tutorials skip.</p>
         <div className="mt-9 flex flex-col gap-3 min-[420px]:flex-row">
-          <a href="#tools" className="inline-flex h-12 items-center justify-center gap-2 border border-[var(--text-primary)] bg-[var(--text-primary)] px-5 text-sm font-medium text-[var(--bg)] transition-colors hover:bg-transparent hover:text-[var(--text-primary)] active:scale-[.98]">Explore the tools <ArrowUpRight className="size-4" /></a>
-          <a href="#how-it-works" className="inline-flex h-12 items-center justify-center gap-2 border border-[var(--border-strong)] px-5 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--text-primary)] active:scale-[.98]">See how it works <ArrowDown className="size-3.5" /></a>
+          <a href="#tools" className="inline-flex h-12 items-center justify-center gap-2 border border-[var(--ink)] bg-[var(--accent)] px-5 font-mono text-xs font-semibold uppercase tracking-[.08em] text-[var(--ink)] shadow-[4px_4px_0_var(--ink)] transition-all hover:-translate-y-0.5 active:translate-x-px active:translate-y-px active:shadow-none">Explore the tools <ArrowUpRight className="size-4" /></a>
+          <a href="#how-it-works" className="inline-flex h-12 items-center justify-center gap-2 border border-[var(--ink)] bg-[var(--background)] px-5 font-mono text-xs font-medium uppercase tracking-[.08em] transition-colors hover:bg-[var(--surface)] active:scale-[.98]">$ see how it works <ArrowDown className="size-3.5" /></a>
         </div>
       </div>
-      <div style={{ '--focus-accent': active.accent } as React.CSSProperties}>
-        <div className="overflow-hidden border border-[var(--border-strong)] bg-[var(--bg-elevated)]">
+      <div style={{ '--focus-accent': active.accent } as React.CSSProperties} className="w-full min-w-0">
+        <div className="overflow-hidden border border-[var(--ink)] bg-[var(--terminal)] shadow-[3px_3px_0_var(--ink)] sm:shadow-[5px_5px_0_var(--ink)]">
+          <div className="dark-panel">
           <div className="grid grid-cols-3 items-center border-b border-border px-4 py-3"><div className="flex gap-1.5"><span className="size-2.5 rounded-full bg-[#ef6a6a]" /><span className="size-2.5 rounded-full bg-[#d9a441]" /><span className="size-2.5 rounded-full bg-[#69a861]" /></div><span className="text-center font-mono text-[10px] text-[var(--text-muted)]">ternixo — zsh</span></div>
-          <div className="min-h-[286px] px-4 py-6 font-mono text-[11px] leading-7 sm:px-6 sm:text-[13px]" aria-live="polite">
+          <div className="min-h-[286px] px-4 py-6 font-mono text-[11px] leading-7 [--text-muted:#696a62] [--text-primary:#f1efe8] [--text-secondary:#96988f] sm:px-6 sm:text-[13px]" aria-live="polite">
             <TerminalLine command={parts[0]} accent={active.accent} cursor={!parts[1] && !done} />
             {(parts[1] || done) && <><p className="pl-5 text-[var(--text-secondary)]">{active.output[0]}</p><TerminalLine command={parts[1] || ''} accent={active.accent} cursor={!done} /></>}
             {done && <><p className="pl-5 text-[var(--text-secondary)]">{active.output[1]}</p><p style={{ color: active.accent }} className="mt-3">{active.complete}<span className="terminal-cursor" /></p></>}
           </div>
-        </div>
-        <div className="mt-3 flex border border-border bg-[var(--bg-elevated)] p-1" role="tablist" aria-label="Preview learning track">
-          {(Object.keys(tracks) as Track[]).map((name) => <button key={name} type="button" role="tab" aria-selected={track === name} onClick={() => setTrack(name)} style={track === name ? { color: tracks[name].accent, borderColor: tracks[name].accent, '--focus-accent': tracks[name].accent } as React.CSSProperties : { '--focus-accent': tracks[name].accent } as React.CSSProperties} className="flex-1 border-b-2 border-transparent px-3 py-2 font-mono text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)] active:scale-[.98]">{name}</button>)}
+          </div>
+          <div className="grid w-full grid-cols-3 border-t border-[var(--ink)] bg-[var(--surface)]" role="tablist" aria-label="Preview learning track">
+            {(Object.keys(tracks) as Track[]).map((name) => <button key={name} type="button" role="tab" aria-selected={track === name} onClick={() => setTrack(name)} style={{ '--focus-accent': tracks[name].accent } as React.CSSProperties} className="min-h-12 border-0 border-r border-[var(--border-light)] bg-transparent px-3 font-mono text-xs font-bold text-[var(--muted-light)] transition-colors hover:bg-[var(--background)] hover:text-[var(--ink)] focus-visible:relative focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-3px] aria-selected:bg-[var(--background)] aria-selected:text-[var(--ink)] aria-selected:shadow-[inset_0_-4px_0_var(--accent)] last:border-r-0 sm:min-h-[58px]">{name}</button>)}
+          </div>
         </div>
       </div>
     </div>
-    <div className="mx-auto flex max-w-6xl items-center gap-3 px-5 pb-6 font-mono text-[11px] uppercase tracking-[.12em] text-[var(--text-muted)] lg:px-8"><GitCommitHorizontal className="size-3.5" /> No videos. No busywork. Just the terminal.</div>
+    <div className="border-t border-border">
+      <div className="mx-auto grid w-full max-w-6xl sm:w-[calc(100%-48px)] sm:grid-cols-[240px_minmax(0,1fr)] sm:border-x sm:border-border lg:grid-cols-[minmax(220px,320px)_minmax(0,1fr)]">
+        <div className="flex flex-col items-start justify-center gap-3 border-b border-border px-5 py-7 sm:min-h-36 sm:border-r sm:border-b-0 sm:px-6 lg:px-8">
+          <strong className="m-0 font-display text-[clamp(1.75rem,3vw,2.625rem)] font-semibold leading-none tracking-[-.04em] text-[var(--ink)]">TERNIXO.</strong>
+          <span className="m-0 font-mono text-xs text-[var(--muted-light)] sm:text-sm">by <span className="font-bold text-[var(--ink)]">Seq</span><span className="font-bold text-[var(--warning)]">Orbit</span></span>
+        </div>
+        <div className="flex min-w-0 items-start gap-3 overflow-hidden px-5 py-6 sm:min-h-36 sm:items-center sm:gap-5 sm:px-6 lg:px-10">
+          <span aria-hidden="true" className="grid size-7 shrink-0 place-items-center text-[var(--muted-light)]"><GitCommitHorizontal className="size-5" /></span>
+          <p className="m-0 min-w-0 [overflow-wrap:anywhere] font-mono text-[15px] leading-relaxed font-medium uppercase tracking-[.08em] text-[var(--muted-light)] sm:text-[clamp(1rem,2vw,1.55rem)] sm:leading-[1.4] sm:tracking-[.12em]">No videos. No busywork. Just the terminal.</p>
+        </div>
+      </div>
+    </div>
   </section>
 }
 

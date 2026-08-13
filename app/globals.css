@@ -17,19 +17,33 @@
 }
 
 :root {
-  color-scheme: dark;
-  --bg: #0a0d12;
-  --bg-elevated: #12161d;
-  --bg-elevated-hover: #171c25;
-  --border: #1f242c;
-  --border-strong: #2b323d;
-  --text-primary: #e8ecf1;
-  --text-secondary: #8a94a3;
-  --text-muted: #5b6472;
-  --accent-git: #f0883e;
-  --accent-docker: #4fc3f7;
-  --accent-linux: #a3e635;
-  --background: var(--bg);
+  color-scheme: light;
+  --background: #f1efe8;
+  --surface: #e7e5dd;
+  --surface-strong: #d8d6cf;
+  --ink: #11130f;
+  --dark-surface: #191b17;
+  --terminal: #0d0f0c;
+  --visualizer: #242720;
+  --accent: #c7ff2f;
+  --border-light: #c9c8c0;
+  --border-dark: #46483f;
+  --muted-light: #696a62;
+  --muted-dark: #96988f;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ff7c6a;
+  --bg: var(--background);
+  --bg-elevated: var(--surface);
+  --bg-elevated-hover: var(--surface-strong);
+  --border: var(--border-light);
+  --border-strong: var(--border-dark);
+  --text-primary: var(--ink);
+  --text-secondary: var(--muted-light);
+  --text-muted: #77786f;
+  --accent-git: var(--accent);
+  --accent-docker: var(--accent);
+  --accent-linux: var(--accent);
   --foreground: var(--text-primary);
   --card: var(--bg-elevated);
   --card-foreground: var(--text-primary);
@@ -40,12 +54,14 @@
 
 * { box-sizing: border-box; border-color: var(--border); }
 html { scroll-behavior: smooth; background: var(--bg); }
-body { min-width: 320px; margin: 0; background: var(--bg); color: var(--text-primary); font-family: var(--font-inter), sans-serif; }
+body { min-width: 320px; margin: 0; overflow-x: hidden; background: var(--bg); color: var(--text-primary); font-family: var(--font-inter), sans-serif; }
 h1, h2, h3 { font-family: var(--font-space-grotesk), sans-serif; }
 code, pre, kbd { font-family: var(--font-jetbrains-mono), monospace; }
 ::selection { background: color-mix(in srgb, var(--accent-linux) 24%, transparent); color: var(--text-primary); }
 a, button { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--focus-accent, var(--accent-linux)); outline-offset: 4px; }
+.technical-grid { background-image: linear-gradient(var(--border-light) 1px, transparent 1px), linear-gradient(90deg, var(--border-light) 1px, transparent 1px); background-size: 32px 32px; }
+.dark-panel { color: #f1efe8; background: var(--terminal); }
 .terminal-cursor { display: inline-block; width: .56em; height: 1.05em; margin-left: 2px; translate: 0 .15em; background: currentColor; animation: cursor-blink 1s steps(1) infinite; }
 @keyframes cursor-blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
